@@ -1,0 +1,396 @@
+/*
+*y
+*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    user-select: none;
+}
+html,body{
+    font-size: 16px;
+    background-image: url(../images/bodybg.png);
+	overflow-x: hidden;
+}
+ul{
+	list-style: none;
+}
+/*等待*/
+.loding {
+    position: fixed;
+    text-align: center;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: #fff;
+    z-index: 100;
+}
+/* 头部 */
+header.header {
+	height: 60px;
+	padding: 0 30px;
+	background: #03a9f4;
+}
+.header .title {
+	display: inline-block;
+    line-height: 60px;
+    height: 60px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #fff;
+    text-shadow: 2px 2px 2px #000;
+}
+.header .icon {
+	left: 250px;
+    position: absolute;
+    display: inline-block;
+}
+.header .icon span{
+	display: inline-block;
+	width: 5px;
+	height: 60px;
+	background: #4caf50;
+	animation: bounce 1s infinite linear;
+}
+.header .icon span:nth-child(2){animation-delay:.3s;}
+.header .icon span:nth-child(3){animation-delay:.6s;}
+.header .icon span:nth-child(4){animation-delay:.9s;}
+.header p {
+	display: inline-block;
+    margin-left: 221px;
+}
+.header .buttondiv {
+	display: inline;
+    float: right;
+    margin-top: 44px;
+}
+.header .buttondiv a {
+	text-decoration: none;
+    display: inline-block;
+    padding: 6px;
+    border: 1px solid #4caf50;
+    border-radius: 5px;
+    font-size: .8rem;
+    background: #4caf50;
+    color: #fff;
+}
+@keyframes bounce {
+    0% { transform: scaleY(1); }
+    50% { transform: scaleY(0.5); } 
+    100% { transform: scaleY(1); } 
+}
+/* 固定导航 */
+.nav {
+	position: fixed;
+    right: 30px;
+    top: 50%;
+    background: #4caf50;
+    border-radius: 5px;
+    transform: translateY(-50%);
+    z-index: 200;
+}
+.nav ul li {
+	width: 10px;
+    height: 10px;
+    margin: 10px;
+    border: 1px solid#fff;
+    border-radius: 50%;
+    text-indent:-9999px;
+}
+/* 介绍 */
+.introduce {
+	height: 100vh;
+    background: -webkit-gradient(linear, 0 0, 0 bottom, from(rgb(60, 106, 127)), to(rgba(60, 106, 127, 0)));
+}
+.introduce .container {
+	max-width:80%; 
+	height: 100%;
+	margin: 0 auto;
+	padding: 50px 0;
+}
+.introduce .intro-left {
+	display: inline-flex;
+    align-items: center;
+	height: 100%;
+	vertical-align: top;
+	width: 40%;
+	overflow: hidden;
+}
+.introduce .intro-left img {
+	max-width: 300px;
+	max-height: 300px;
+	border-radius: 50%;
+	transform: translateY(0) ;
+	transition:all 1s linear;
+}
+.introduce .intro-left img:hover{
+	    transform:  translateY(100px) ;
+}
+.introduce .intro-right {
+	height: 90vh;
+	display: inline-block;
+	vertical-align: top;
+	width: 59%;
+	padding-left: 20px; 
+	overflow-x: hidden;
+    overflow-y: auto;
+}
+/* 专辑 */
+.special {
+	padding: 100px 0;
+    height: 100vh;
+    box-sizing: border-box;
+}
+.special .special-container {
+    margin: 50px auto;
+    max-width: 200px;
+    perspective: 1600px;
+}
+.special-container .items {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    transform-style: preserve-3d;
+    animation: autoMove 60s infinite linear;
+}
+.special-container .items:hover {
+    /*鼠标移入 暂停动画*/
+    animation-play-state: paused;
+}
+.special-container .item {
+    position: absolute;
+    width: 200px;
+    background-color: rgba(242, 247, 249, .9);
+    text-align: center;
+    box-sizing: content-box;
+    display: inline-block;
+    padding: 5px;
+}
+
+.special-container .item img {
+    width: 200px;
+}
+.special-container .item p {
+    text-align: center;
+    font-size: 14px;
+    position: relative;
+}
+.special-container .item p:after{
+	content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background: #bbb;
+    left: 0px;
+    bottom: -160%;
+}
+/*定义自动旋转的动画*/
+@keyframes autoMove {
+    from { }
+    to {transform: rotateY(-360deg); } 
+}
+/* 故事会 */
+.storys {
+    position: relative;
+	padding: 50px 0;
+	background: #eee;
+	height: 100vh;
+    overflow: hidden;
+    background: -webkit-gradient(linear, 0 0, 0 bottom, from(rgba(60, 106, 127, 0)), to(rgba(60, 106, 127, 1)));
+}
+.storys h1 {
+	text-align: center;
+	margin: 10px 0;
+}
+.storys .storylist {
+	position: relative;
+	width: 600px;
+	margin: 50px auto 0;
+	background: red;
+}
+.storys .storylist .story{
+	position: absolute;
+	background: #fff;
+	width: 600px;
+    height: 200px;
+    word-break: break-word;
+    margin: 20px 10px;
+    padding: 20px;
+    box-shadow: 0px 0px 13px 3px #999;
+    /*transform: translate(50%);*/
+    border-radius: 10px;
+    display: inline-flex;
+    align-items: center;
+}
+.storys .story p{
+    margin-bottom: 10px;
+    max-height: 105px;
+    width: 100%;
+    word-break: break-word;
+    overflow: hidden;
+ }
+
+.storys .story .storyinfo {
+    position: absolute;
+    bottom: 20px;
+    left: 100px;
+    font-size: .8rem;
+    color: #777;
+}
+
+.storys .story .storyicon a {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    background-image: url(../images/icon.png);
+}
+.storys .story .storyicon {
+    position: absolute;
+    bottom: 10px;
+    right: 100px;
+}
+.storys .story .storyicon a:nth-child(1){
+    background-position: ();
+}
+.storys .story .storyicon a:nth-child(1):hover{
+    background-position: 0 -30px;
+}
+.storys .story .storyicon a:nth-child(2){
+    background-position: -30px -30px;
+}
+.storys .story .storyicon a:nth-child(2):hover{
+    background-position: -30px 0;
+}
+
+.storys .storybtn {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 10%;
+    width: 200px;
+    height: 40px;
+    line-height: 40px;
+    border: 1px solid #4caf50;
+    color: #fff;
+    border-radius: 15px;
+    background: #4caf50;
+}
+
+.storys .storybtn:hover {
+    background: transparent;
+    cursor: pointer;
+}
+
+.storys .from {
+    position: absolute;
+    left: 50%;
+    margin-left: -400px;
+    bottom: 65px;
+    width: 800px;
+    height: 440px;
+    background: #fff;
+    font-size: 0;
+    box-shadow: 0px 10px 15px 5px #3b3c3e;
+    -webkit-animation-fill-mode:both;
+}
+.storys .from h2 {
+    font-size: 1.2rem;
+    text-align: center;
+    margin: 50px 0; 
+}
+.storys .from input{
+    width: 40%;
+    height: 36px;
+    line-height: 36px;
+    border-radius: 10px;
+    border: none;
+    border: 1px solid #4caf50;
+    margin: 20px 5%;
+    padding: 0 10px;
+}
+.storys .from textarea{
+    width: 720px;
+    height: 150px;
+    display: block;
+    margin: 20px 39px 20px 40px;
+    border: 1px solid #4caf50;
+    padding: 20px;
+    outline: none;
+    resize: none;
+}
+
+
+.storys .from .exit{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 30px;
+    height: 30px;
+    border: none;
+    background-image: url(../images/icon.png);
+    text-indent: -9999px;
+    background-color: transparent;
+}
+.storys .from .post{
+    width: 100px;
+    line-height: 30px;
+    border-radius: 5px;
+    border: transparent;
+    background: #4caf50;
+    position: absolute;
+    right: 5%;
+    color: #fff;
+    font-weight: bold;
+}
+
+
+
+
+
+
+
+
+
+
+
+input {
+    outline: none;
+}
+.btn {
+    outline: none;
+    cursor: pointer;
+}
+/*显示输入面板动画*/
+.hideInputBox {
+    animation: slideOut 1s;
+}
+.showInputBox {
+    animation: slideIn 1s ;
+}
+
+
+
+  @keyframes slideIn{
+    0%{transform:translateY(400px) scaleX(0)}
+    100%{transform:translateY(0) scaleX(1)}
+  }
+
+  @keyframes slideOut {
+    from {transform:translateY(0) scaleX(1) }
+    to {transform:translateY(400px) scaleX(0)} 
+    }
+/*故事列表*/
+.hide {
+    /*transform: scaleX(0) translateY(-100px) rotateZ(-180deg);*/
+    transform:  translateX(400px) translateY(400px) scaleX(0);
+    transform-origin: 50% 97%;
+    transition: all 1s;
+}
+
+.intro-right::-webkit-scrollbar{
+	width: 0;
+}
+pre {
+white-space: pre-wrap;
+word-wrap: break-word;
+}

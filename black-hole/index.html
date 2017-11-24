@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>黑洞</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+  <style>
+  *{
+    margin: 0;
+    padding:0;
+  }
+  .all-container{
+    position: relative;
+    height: 100vh;
+    width: 100vw;
+    background: #eee;
+  }
+  /*加载页面*/
+  .loading{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background:#0099cc;
+    flex-direction: column;
+    color: #fff;
+  }
+  .loading h1{}
+  .loading p{
+    margin-top: 10px;
+  }
+
+  /*内容页面*/
+  .content{
+    width: 100cw;
+    height: 100vh;
+    position: relative;
+
+  }
+  .black-hole-div{
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    top: 0;
+    left: 0;
+    background: rgba(0,0,0,.2);
+    transition: all 1s;
+  }
+  .close{
+    position: absolute;
+    width: 44px;
+    height: 44px;
+    font-size: 18px;
+    text-align: center;
+    line-height: 44px;
+    color: #fff;
+    top: 5%;
+    right: 10%;
+    background: #00BCD4;
+    border-radius: 50%;
+  }
+  .black-hole{
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    background: url(blackhole.png);
+    background-size: 400px;
+    top: 50%;
+    left: 50%;
+    margin: -200px;
+    border-radius: 50%;
+    background-position: center;
+    animation: myrotate 20s linear infinite;
+  }
+  @keyframes myrotate{
+    0%{transform: rotate(0deg);}
+    100%{transform: rotate(360deg);}
+  }
+  .img-container{
+    min-height: 100vh;
+  }
+  .img-container img{
+    height: 100px;
+    transition: all 1s;
+    backface-visibility: hidden;
+    transform-style: preserve-3d;
+  }
+ 
+  </style>
+</head>
+<body>
+  <div class="all-container" id="j_all_container">
+    <div class="loading" id="loading">
+      <h1>loading...</h1>
+      <p id="progress">已加载：0%</p>
+    </div>
+    <div class="content" id="j_content" style="display:none">
+      <div class="black-hole-div" id="j_black_hole_div">
+        <span class="close" id="j_close">x</span>
+        <div class="black-hole" id="j_blackhole"></div>
+      </div>
+      <div class="img-container">
+        <img src="./images/041.jpg"/>
+        <img src="./images/042.jpg"/>
+      </div>
+    </div>
+  </div>
+  <script>
+  (function(){
+    //获取黑洞位置大小参数
+    
+    var blackholeTop
+    var blackholeLeft
+    var blackholeHeight
+    var blackholeWidth
+    var _blackholeWidth
+    var _blackholeHeight
+    /*
+    *Function distance(tag)
+    *传入元素，计算每个元素与黑洞中心的距离，返回XY距离值
+    */
+    function distance(tag){
+      //获取元素位置
+      var top = tag.getBoundingClientRect().top
+      var left = tag.getBoundingClientRect().left
+      var _width = tag.offsetHeight/2
+      var _height = tag.offsetWidth/2
+
+    console.log(tag.getBoundingClientRect())
+      return {
+        // _x:left - blackholeLeft >= 0?'右':'左',
+        // _y:top - blackholeTop >= 0?'下':'上',
+        x: (left+_width) - (blackholeLeft+_blackholeWidth) >= 0 ?-(left+_width-blackholeLeft-blackholeWidth/2) :blackholeLeft+blackholeWidth/2-left-_width,
+        y: (top+_height) - (blackholeTop+_blackholeHeight) >= 0 ?-(top+_height-blackholeTop-blackholeHeight/2) :blackholeTop+blackholeHeight/2-top-_height
+      }
+    }
+    /*
+    *Function slide(el)
+    *传入元素，调用distance函数获取距离，设置元素style使其滑行至黑洞
+    */
+    function slide(el){
+      var result = distance(el)
+      var time = Math.abs(result.x)+Math.abs(result.y)
+      var t = 'translate3d('+result.x+'px,'+result.y+'px, 0) scale(0) rotate(360deg'
+      el.style.transition = "all "+time/50+"s"
+      el.style.transform = t
+    }
+
+    /*
+    *取消图片的style特效
+    */
+    function cancel(el){
+      el.style.transition = ""
+      el.style.transform = ""
+    }
+
+    /*
+    *点击关闭事件
+    */
+    var close = document.getElementById('j_close')
+    close.addEventListener('click',closeClick,false)
+    function closeClick() {  
+        document.getElementById('j_black_hole_div').style.display = 'none'
+        revokeStunt()
+    }
+
+    /*
+    *让图片加上特效
+    */
+    function haveStunt(){
+      blackholeTop = document.querySelector('#j_blackhole').getBoundingClientRect().top
+      blackholeLeft = document.querySelector('#j_blackhole').getBoundingClientRect().left
+      blackholeHeight = document.querySelector('#j_blackhole').offsetHeight
+      blackholeWidth =document.querySelector('#j_blackhole').offsetWidth
+      _blackholeWidth = blackholeWidth/2
+      _blackholeHeight = blackholeHeight/2
+      alert(blackholeTop+"*"+blackholeLeft+"*"+blackholeHeight+"*"+blackholeWidth+"*"+_blackholeWidth+"*"+_blackholeHeight)
+      var elList = document.querySelectorAll('img')
+      setTimeout(function(){
+        // for(let i = 0;i<elList.length;i++){
+        //   alert("-------**********------");
+        // }
+        elList.forEach(function (value,index){
+          // alert("---------5--------");
+          slide(value);
+        })        
+      },2000)
+
+    }
+
+    /*
+    *让图片撤去特效
+    */
+    function revokeStunt(){
+      var elList = document.querySelectorAll('img')
+      elList.forEach(function(v,i){
+        cancel(v);
+      })
+    }
+
+
+
+
+
+    /*
+    *预加载图片
+    *当图片加载完成后隐藏加载页显示内容页
+    */
+    function getPreloadImgAttr(imgArr){
+      var len = imgArr.length,count = 0;
+      imgArr.forEach(function (value,index){
+        var img = new Image()
+        img.onload = function () {
+          count = count+1;
+          document.getElementById('progress').innerHTML = '已加载' + Math.round((count / len )* 100)  + '%'
+          if( count == len ){
+            var setTimeoutID = setTimeout(function(){
+              loading.style.display = "none"
+              j_content.style.display = "block"
+              haveStunt()
+              clearTimeout(setTimeoutID)
+            },1000)
+          }
+        }
+        img.src=imgArr[index];
+      })
+    }
+    /*
+    *init 初始化
+    *加载图片
+    */
+    var imgArr = ['./images/041.jpg','./images/042.jpg']
+    getPreloadImgAttr(imgArr)
+
+
+
+
+
+
+
+
+
+
+
+  })()
+ // slide(document.querySelectorAll('img')[22])
+// distance(document.querySelectorAll('img')[12])
+// document.querySelectorAll('img')[22].style.transform = 'translate(-180px,-10px) scale(0)'; 
+  </script>
+</body>
+</html>

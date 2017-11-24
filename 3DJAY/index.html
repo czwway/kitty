@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>3D旋转</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="HandheldFriendly" content="true">
+    <link rel="stylesheet" href="style/mystyle.css">
+</head>
+<body>
+    <div class="loding" id="loding">
+            <p>loding......</p>
+            <p class="progress" id="progress">图片加载中..</p>
+    </div>
+    <nav class="nav">
+        <ul id="navul">
+            <a href="javascript:;"><li>1</li></a>
+            <a href="javascript:;"><li>2</li></a>
+            <a href="javascript:;"><li>3</li></a>
+            <a href="javascript:;"><li>4</li></a>
+            <a href="javascript:;"><li>5</li></a>
+        </ul>
+    </nav>
+    <header class="header">
+        <div class="title">HELLO JAY</div>
+        <div class="icon">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <p>This is a my mark about jay Chou</p>
+        <div class="buttondiv">
+            <a href="javascript:;">无聊的测试</a>
+            <a href="javascript:;">无聊的测试</a>
+            <a href="javascript:;">无聊的测试</a>
+        </div>
+    </header>
+    <!-- 人物介绍 -->
+    <section class="introduce">
+        <div class="container">
+            <div class="intro-left">
+                <img src="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3447632000,513882655&fm=27&gp=0.jpg" alt="">
+            </div>
+            <div class="intro-right" id="inforight">
+                <pre id="pre"></pre>
+            </div>
+        </div>
+    </section>
+    <!-- 3D旋转专辑 -->
+    <section class="special">
+        <div class="special-container">
+            <div class="items" id="items">
+            </div>
+        </div>
+    </section>
+    <!-- 故事集 -->
+    <section class="storys">
+        <h1>故事会</h1>
+        <div class="storylist" id="storylist">
+            <div class="story">
+                <p>香车红袖青丝扬，1111田舍生烟苍莽茫。燕踏轻雾南飞去，日藏韶山人未还，</p>
+                <div class="storyinfo">
+                    2017-09-12 12:12:12 | 陈志伟
+                </div>
+                <div class="storyicon">
+                    <a href="javascript:void(0);" onclick="hide(this)"></a>
+                    <a href="javascript:void(0);" onclick="good(this)"></a>
+                </div>
+            </div>
+            <div class="story">
+                <p>香车红袖青丝扬，444田舍生烟苍莽茫。燕踏轻雾南飞去，日藏韶山人未还，香车红袖青丝扬，444田舍生烟苍莽茫。燕踏轻雾南飞去，日藏韶山人未还，香车红袖青丝扬，444田舍生烟苍莽茫。燕踏轻雾南飞去，日藏韶山人未还，香车红袖青丝扬，444田舍生烟苍莽茫。燕踏轻雾南飞去，日藏韶山人未还，香车红袖青丝扬，444田舍生烟苍莽茫。燕踏轻雾南飞去，日藏韶山人未还，香车红袖青丝扬，444田舍生烟苍莽茫。燕踏轻雾南飞去，日藏韶山人未还，香车红袖青丝扬，222田舍生烟苍莽茫。燕踏轻雾南飞去，日藏韶山人未还，</p>
+                <div class="storyinfo">
+                    2017-09-12 12:12:12 | 陈志伟
+                </div>
+                <div class="storyicon">
+                    <a href="javascript:void(0);" onclick="hide(this)"></a>
+                    <a href="javascript:void(0);" onclick="good(this)"></a>
+                </div>
+            </div>
+            <div class="story">
+                <p>香车红袖青丝扬，444田舍生烟苍莽茫。燕踏轻雾南飞去，日藏韶山人未还，香车红袖青丝扬，444田舍生烟苍莽茫。燕踏轻雾南飞去，日藏韶山人未还，香车红袖青丝扬，333田香车红袖青丝扬，444田舍生烟苍莽茫。燕踏轻雾南飞去，日藏韶山人未还，舍生烟苍莽茫。燕踏轻雾南飞去，日藏韶山人未还，</p>
+                <div class="storyinfo">
+                    2017-09-12 12:12:12 | 陈志伟
+                </div>
+                <div class="storyicon">
+                    <a href="javascript:void(0);" onclick="hide(this)"></a>
+                    <a href="javascript:void(0);" onclick="good(this)"></a>
+                </div>
+            </div>
+            <div class="story">
+                <p>香车红袖青丝扬，444田舍生烟苍莽茫。燕踏轻雾南飞去，日藏韶山人未还，香车红袖青丝扬，444田舍生烟苍莽茫。燕踏轻雾南飞去，日藏韶山人未还，</p>
+                <div class="storyinfo">
+                    2017-09-12 12:12:12 | 陈志伟
+                </div>
+                <div class="storyicon">
+                    <a href="javascript:void(0);" onclick="hide(this)"></a>
+                    <a href="javascript:void(0);" onclick="good(this)"></a>
+                </div>
+            </div>
+            <div class="story">
+                <p>香车红袖青丝扬，555田舍生烟苍莽茫。燕踏轻雾南飞去，日藏韶山人未还，</p>
+                <div class="storyinfo">
+                    2017-09-12 12:12:12 | 陈志伟
+                </div>
+                <div class="storyicon">
+                    <a href="javascript:void(0);" onclick="hide(this)"></a>
+                    <a href="javascript:void(0);" onclick="good(this)"></a>
+                </div>
+            </div>
+        </div>
+        <button class="storybtn btn" onclick="showInputBox()">Say what you feel</button>
+        <section class="from hideInputBox" id="storyfrom">
+            <h2>说出你的故事</h2>
+            <input type="text" placeholder=""/>
+            <input type="text" placeholder=""/>
+            <textarea name="" id="textarea"></textarea>
+            <button class="exit btn" onclick="hideInputBox()">exit</button>
+            <button class="post btn" onclick="hideInputBox()">post</button>
+        </section>
+    </section>
+<script src="javascript/js.js"></script>
+</body>
+</html>
+
+
+
+
+<!-- 11.餐厅管理
+12.菜品管理 
+13.类别管理
+14.用户管理
+15.权限管理
+16.订单管理
+17.物流管理
+18.员工管理
+19.报表管理
+20.广告管理 -->
